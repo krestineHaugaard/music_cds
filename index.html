@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <script type="module" src="js/main.js"></script>
+    <title>Music CD's | Mandatory Assignment</title>
+</head>
+<body>
+    <header>
+        <h1>Music CDs</h1>
+    </header>
+    <main>
+        <form>
+            <div>
+                <label for="txtAuthor">Author</label>
+                <input type="text" id="txtAuthor" required>
+            </div>
+             <div>
+                <label for="txtTitle">Title</label>
+                <input type="text" id="txtTitle" required>
+            </div>
+             <div>
+                <label for="txtYear">Year</label>
+                <input type="number" id="txtYear" pattern="[0-9]{4}" required>
+            </div>
+            <div>
+                <input type="button" value="Add">
+            </div>
+        </form>
+        <section id="DataTabel">
+
+        </section>
+    </main>
+    <footer>Music CD's | Mandatory Assignment</footer>
+</body>
+</html>
