@@ -26,6 +26,8 @@ tabelHead.appendChild(tabelTR);
 
 table.appendChild(tabelHead);
 
+table.appendChild(tabelBody);
+
 // Here i handle the submit
 
 document.querySelector("#FormData").addEventListener("submit", (e) => {
@@ -65,12 +67,10 @@ document.querySelector("#FormData").addEventListener("submit", (e) => {
         tabelBody.removeChild(dataCollection);
     });
 
-    // Once the clone is done 
+    // Once the clone is done being filled with data
 
     tabelBody.appendChild(dataCollection);
-
-    table.appendChild(tabelBody);
-
+   
     // I use e.target.reset() to clean my input fields, making it easier to type in new data
 
     e.target.reset();
