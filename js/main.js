@@ -1,81 +1,80 @@
-// Det her virker men er for simpelt
+// Grabiing my table so I can easily fill it with elements and data
 
-// document.querySelector("#FormData").addEventListener("submit", (e) => {
-//     e.preventDefault();
+const table = document.querySelector("#DataTabel");
 
-//     const dataAuthor = e.target.txtAuthor.value;
-//     const dataTitle = e.target.txtTitle.value;
-//     const dataYear = e.target.txtYear.value;
+// This is where i create the different table elements for my table
 
-//     console.log(dataAuthor, dataTitle, dataYear);
-
-//     const dataOverview = document.querySelector("#DataTabel");
-
-//     const authorText = document.createElement("p");
-
-//     const titleText = document.createElement("p");
-
-//     const yearText = document.createElement("p");
-
-//     authorText.appendChild(document.createTextNode(dataAuthor));
-
-//     titleText.appendChild(document.createTextNode(dataTitle));
-
-//     yearText.appendChild(document.createTextNode(dataYear));
-
-//     dataOverview.appendChild(authorText);
-//     dataOverview.appendChild(titleText);
-//     dataOverview.appendChild(yearText);
-
-// })
+const tabelHead = document.createElement("thead");
+const tabelBody = document.createElement("tbody");
+const tabelTR = document.createElement("tr");
+const tHeadAuthor = document.createElement("th");
+const tHeadTitle = document.createElement("th");
+const tHeadYear = document.createElement("th");
 
 
+// Here i give the three head categories some inner text or "titles" 
 
-// Det her skal rettes meget til
+tHeadAuthor.innerText = "Author";
+tHeadTitle.innerText="Title";
+tHeadYear.innerText="Year";
+
+// Here i append the categories to the table, and after to the tablehead and lastly to the table istself
+
+tabelTR.append(tHeadAuthor, tHeadTitle, tHeadYear);
+
+tabelHead.appendChild(tabelTR);
+
+table.appendChild(tabelHead);
+
+// Here i handle the submit
 
 document.querySelector("#FormData").addEventListener("submit", (e) => {
+    // Making sure there is no reload of the page, because then our form data disapears
+    
     e.preventDefault();
+
+    // Grabbing the data from the form after the submit
 
     const dataAuthor = e.target.txtAuthor.value;
     const dataTitle = e.target.txtTitle.value;
     const dataYear = e.target.txtYear.value;
 
-    const dataOverview = document.querySelector("#DataTabel");
+    // Here i create a default deletebutton and give it some inne text
 
-    const tabel = document.createElement("table");
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete";
 
-    const tabelHead = document.createElement("thead");
+    // Here i create a template for the body of the table
 
-    const tabelTR = document.createElement("tr");
+    const template = document.createElement("tr");
+    template.appendChild(document.createElement("td"));
+    template.appendChild(document.createElement("td"));
+    template.appendChild(document.createElement("td"));
+    template.appendChild(deleteButton);
 
-    const tHeadAuthor = document.createElement("th");
+    // Here i clone my templete and then I fill out the element whit our form data 
 
-    const tHeadTitle = document.createElement("th");
+    let dataCollection = template.cloneNode(true);
+    dataCollection.querySelector("td:nth-of-type(1)").innerText = dataAuthor;
+    dataCollection.querySelector("td:nth-of-type(2)").innerText = dataTitle;
+    dataCollection.querySelector("td:nth-of-type(3)").innerText = dataYear;
+    // I added the eventlistner after it was cloned, because clone node does not clone functions
+    dataCollection.querySelector("button").addEventListener("click", () => {
+        // I also tried with a unik ID for the tr element that worked, but this is more simple and ->
+        // becuase the function is embedded like this, the button knows what to delete
+        tabelBody.removeChild(dataCollection);
+    });
 
-    const tHeadYear = document.createElement("th");
+    // Once the clone is done 
 
-    // tHeadAuthor.appendChild(document.createTextNode("Author"));
+    tabelBody.appendChild(dataCollection);
 
-    // tHeadTitle.appendChild(document.createTextNode("Title"));
+    table.appendChild(tabelBody);
 
-    // tHeadYear.appendChild(document.createTextNode("Year"));
+    // I use e.target.reset() to clean my input fields, making it easier to type in new data
 
-    tabelTR.appendChild(tHeadAuthor.innerText);
-
-    tabelTR.appendChild(tHeadAuthor + tHeadTitle + tHeadYear);
-
-    tabelTR.appendChild(tHeadAuthor + tHeadTitle + tHeadYear);
-
-    tabelHead.appendChild(tabelTR);
-
-    tabel.appendChild(tabelHead);
-
-    dataOverview.appendChild(tabel);
-
-
+    e.target.reset();
 })
-
-
 
 
 
