@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/main.css">
     <script type="module" src="js/main.js"></script>
+    <link rel="stylesheet" href="style/main.css">
     <title>Music CD's | Mandatory Assignment</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
             </div>
              <div>
                 <label for="txtYear">Year</label>
-                <input type="number" id="txtYear" pattern="[0-9]{4}" required>
+                <input type="number" id="txtYear" min="1" max="9999" required>
             </div>
             <div>
                 <input type="submit" value="Add">

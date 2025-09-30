@@ -1,0 +1,122 @@
+@import "variables.css";
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+header{
+    background-color: var(--mainColBlue);
+    padding: 1rem 2rem;
+
+    h1{
+        color: var(--textColLight);
+        font-size: xx-large;
+    }
+}
+
+main{
+    padding: 1rem;
+
+    form{
+        display: grid;
+        gap: 0.5rem;
+
+        div{
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            gap: 0.5rem;
+
+            label{
+                grid-column: 1;
+            }
+
+            input{
+                grid-column: 2;
+            }
+
+        }
+
+        div:last-child{
+
+            input{
+                grid-column: 1;
+                font-size: x-large;
+                color: var(--mainColBlue);
+                font-weight: 100;
+                padding: 0.5rem;
+                margin-block: 0.5rem;
+                border-radius: 0.3rem;
+                place-self: start;
+            }
+        }
+    }
+
+    table{
+
+        outline: thin solid var(--mainColBlue);
+        min-width: 100%;
+
+        thead{
+
+            tr{
+
+                th{
+                    background-color: var(--mainColBlue);
+                    color: var(--textColLight);
+                    text-align: start;
+                    padding: 0.2rem 0.5rem;
+                }
+            }
+        }
+
+        tbody{
+
+            tr{
+
+                place-content: center;
+
+                td{
+                    padding-block: 0.5rem;
+                }
+
+                :nth-child(3){
+                    text-align: end;
+                }
+
+                :last-child{
+                    place-self: center;
+                }
+
+                button{
+                    border: none;
+                    display: flex;
+
+                    svg{
+                        color: var(--iconGrey);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1000px) {
+    body{
+
+        header{
+            
+            h1{
+                margin-inline: 20%;
+            }
+        }
+
+        main{
+            margin-inline: 20%;
+        }
+    }
+}
